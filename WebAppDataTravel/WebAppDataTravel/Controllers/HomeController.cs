@@ -5,13 +5,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebAppDataTravel.Models;
+using Microsoft.Extensions.Logging;
 
 namespace WebAppDataTravel.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
         public IActionResult Index()
         {
+            _logger.LogInformation("Index page says hello");
             return View();
         }
 
